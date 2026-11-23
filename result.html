@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<div class="card p-4 text-center">
+    <h3 class="mb-3">📊 Prediction Result</h3>
+    <div class="display-4 mb-3 {% if prediction == 'Approved' %}result-approved{% else %}result-rejected{% endif %}">
+        {{ prediction }}
+    </div>
+    <p class="lead">Confidence Score: <strong>{{ probability }}%</strong></p>
+
+    <div class="card bg-light p-3 mt-3">
+        <h5>Applicant Details</h5>
+        <ul class="list-unstyled">
+            <li><strong>Gender:</strong> {{ details.gender }}</li>
+            <li><strong>Income Type:</strong> {{ details.income_type }}</li>
+            <li><strong>Annual Income:</strong> ${{ details.annual_income }}</li>
+            <li><strong>Employment Duration:</strong> {{ details.employment_duration }} years</li>
+            <li><strong>Education:</strong> {{ details.education_level }}</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-secondary">⬅ New Application</a>
+        <a href="/dashboard" class="btn btn-outline-primary">📈 View Dashboard</a>
+    </div>
+</div>
+{% endblock %}
